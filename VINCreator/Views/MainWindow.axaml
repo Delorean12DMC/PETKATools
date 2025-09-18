@@ -1,0 +1,401 @@
+<!--  MainWindow.axaml  -->
+<Window
+    x:Class="VINCreator.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:VINCreator.ViewModels"
+    Title="{CompiledBinding WindowTitle}"
+    Width="910"
+    MaxHeight="650"
+    d:DesignHeight="500"
+    d:DesignWidth="910"
+    x:DataType="vm:MainWindowViewModel"
+    CanMaximize="False"
+    CanResize="False"
+    Icon="/Assets/vincreator-logo.ico"
+    Opened="OnOpened"
+    SizeToContent="Height"
+    WindowStartupLocation="Manual"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <!--  Main grid layout for organizing input fields and controls  -->
+    <Grid
+        Margin="10,10"
+        VerticalAlignment="Top"
+        ColumnSpacing="5"
+        RowSpacing="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="275" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Info label  -->
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="{CompiledBinding InfoLabel}" />
+
+        <!--  Info border for displaying help text  -->
+        <Border
+            x:Name="ResetSelection"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Width="600"
+            Height="96"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderBrush="Gray"
+            BorderThickness="4"
+            Tapped="OnTapped">
+            <TextBlock
+                MaxWidth="590"
+                MaxHeight="86"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="{CompiledBinding InfoHeader}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+        </Border>
+
+        <!--  Open button  -->
+        <Button
+            x:Name="Open"
+            Grid.Row="2"
+            Grid.Column="0"
+            Width="85"
+            HorizontalContentAlignment="Center"
+            Content="{CompiledBinding OpenButton}"
+            Tapped="OnTapped" />
+
+        <!--  Save button  -->
+        <Button
+            x:Name="Save"
+            Grid.Row="2"
+            Grid.Column="0"
+            Width="85"
+            HorizontalAlignment="Right"
+            HorizontalContentAlignment="Center"
+            Content="{CompiledBinding SaveButton}"
+            Tapped="OnTapped" />
+
+        <!--  Nickname input  -->
+        <TextBox
+            x:Name="Nickname"
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{CompiledBinding NicknameInput}"
+            TextChanged="TextBoxTextChanged"
+            Watermark="{CompiledBinding Nickname}" />
+
+        <!--  Clear all button  -->
+        <Button
+            x:Name="ClearAll"
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalAlignment="Right"
+            Content="{CompiledBinding EmptyAll}"
+            Tapped="OnTapped" />
+
+        <!--  Helper image border  -->
+        <Border
+            Grid.Row="0"
+            Grid.RowSpan="13"
+            Grid.Column="3"
+            BorderBrush="Transparent"
+            BorderThickness="4">
+            <Image
+                x:Name="HelperImage"
+                Margin="5"
+                VerticalAlignment="Top"
+                Source="/Assets/StickerMain.png"
+                Stretch="Uniform" />
+        </Border>
+
+        <!--  VIN label  -->
+        <Label
+            x:Name="VIN"
+            Grid.Row="3"
+            Grid.Column="0"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding VIN}"
+            Tapped="OnTapped" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="0"
+            Width="200"
+            VerticalAlignment="Top"
+            Text="{CompiledBinding InputVIN}"
+            TextChanged="TextBoxTextChanged" />
+
+        <!--  Model code label and input  -->
+        <Label
+            x:Name="ModelCode"
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding ModelCode}"
+            Tapped="OnTapped" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            Width="200"
+            VerticalAlignment="Top"
+            Text="{CompiledBinding InputModelCode}"
+            TextChanged="TextBoxTextChanged" />
+
+        <!--  Color code label and input  -->
+        <Label
+            x:Name="ColorCode"
+            Grid.Row="3"
+            Grid.Column="2"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding ColorCode}"
+            Tapped="OnTapped" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="2"
+            Width="200"
+            VerticalAlignment="Top"
+            Text="{CompiledBinding InputColorCode}"
+            TextChanged="TextBoxTextChanged" />
+
+        <!--  Engine code label and input  -->
+        <Label
+            x:Name="EngineCode"
+            Grid.Row="5"
+            Grid.Column="0"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding EngineCode}"
+            Tapped="OnTapped" />
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="0"
+            Width="200"
+            VerticalAlignment="Top"
+            Text="{CompiledBinding InputEngineCode}"
+            TextChanged="TextBoxTextChanged" />
+
+        <!--  Engine number label and input  -->
+        <Label
+            x:Name="EngineNumber"
+            Grid.Row="5"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding EngineNumber}"
+            Tapped="OnTapped" />
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="1"
+            Width="200"
+            VerticalAlignment="Top"
+            Text="{CompiledBinding InputEngineNumber}"
+            TextChanged="TextBoxTextChanged" />
+
+        <!--  Transmission code label and input  -->
+        <Label
+            x:Name="TransmissionCode"
+            Grid.Row="5"
+            Grid.Column="2"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding TransmissionCode}"
+            Tapped="OnTapped" />
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="2"
+            Width="200"
+            VerticalAlignment="Top"
+            Text="{CompiledBinding InputTransmissionCode}"
+            TextChanged="TextBoxTextChanged" />
+
+        <!--  Country code label and input  -->
+        <Label
+            x:Name="CountryCode"
+            Grid.Row="7"
+            Grid.Column="0"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding CountryCode}"
+            Tapped="OnTapped" />
+        <TextBox
+            Grid.Row="8"
+            Grid.Column="0"
+            Width="200"
+            VerticalAlignment="Top"
+            Text="{CompiledBinding InputCountryCode}"
+            TextChanged="TextBoxTextChanged" />
+
+        <!--  Model year label and combo box  -->
+        <Label
+            x:Name="ModelYear"
+            Grid.Row="7"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding ModelYear}"
+            Tapped="OnTapped" />
+        <ComboBox
+            Grid.Row="8"
+            Grid.Column="1"
+            Width="200"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding ModelYears}"
+            SelectedValue="{Binding SelectedModelYear, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding Key}" />
+                        <Run Text="{Binding Key, Converter={StaticResource IsEmptyStringConverter}, ConverterParameter=' - '}" />
+                        <Run Text="{Binding Value}" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <!--  Production date label and picker  -->
+        <Label
+            x:Name="ProductionDate"
+            Grid.Row="7"
+            Grid.Column="2"
+            VerticalAlignment="Top"
+            Content="{CompiledBinding ProductionDate}"
+            Tapped="OnTapped" />
+        <CalendarDatePicker
+            Grid.Row="8"
+            Grid.Column="2"
+            Width="200"
+            VerticalAlignment="Top"
+            SelectedDate="{CompiledBinding SelectedProductionDate,
+                                           Mode=TwoWay}"
+            Watermark="TT.MM.JJJJ" />
+
+        <!--  Equipment codes label  -->
+        <Label
+            x:Name="EquipmentCodes"
+            Grid.Row="9"
+            Grid.Column="0"
+            Content="{CompiledBinding EquipmentCodes}"
+            Tapped="OnTapped" />
+
+        <!--  Search input and add button for equipment codes  -->
+        <StackPanel
+            Grid.Row="10"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Orientation="Horizontal"
+            Spacing="5">
+            <TextBox
+                Width="730"
+                Text="{CompiledBinding SearchInput,
+                                       Mode=TwoWay,
+                                       UpdateSourceTrigger=PropertyChanged}"
+                TextChanged="TextBoxTextChanged"
+                Watermark="{CompiledBinding WatermarkSearch}" />
+            <Button
+                Command="{CompiledBinding AddEquipmentCodeCommand}"
+                CommandParameter="{Binding SelectedItem, ElementName=SearchResultsListBox}"
+                Content="{CompiledBinding AddSelection}"
+                IsEnabled="{CompiledBinding IsAddEnabled}" />
+        </StackPanel>
+
+        <!--  Filtered equipment codes list  -->
+        <Border
+            Grid.Row="11"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            MaxHeight="150"
+            Background="White"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="4">
+            <ListBox
+                x:Name="SearchResultsListBox"
+                VerticalAlignment="Top"
+                IsVisible="{CompiledBinding FilteredEquipmentCodes.Count,
+                                            Converter={StaticResource IsGreaterThanZeroConverter}}"
+                ItemsSource="{CompiledBinding FilteredEquipmentCodes}"
+                SelectionChanged="SearchResultsListBoxSelectionChanged"
+                SelectionMode="Single">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Code}" />
+                            <Run Text=" - " />
+                            <Run Text="{Binding Description}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Padding" Value="5" />
+                        <Setter Property="Cursor" Value="Hand" />
+                    </Style>
+                </ListBox.Styles>
+            </ListBox>
+        </Border>
+
+        <!--  Selected equipment codes list and remove button  -->
+        <StackPanel
+            Grid.Row="12"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Orientation="Horizontal"
+            Spacing="5">
+            <ListBox
+                x:Name="EquipmentCodesListBox"
+                Grid.Row="12"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Width="730"
+                MaxHeight="150"
+                VerticalAlignment="Top"
+                ItemsSource="{CompiledBinding InputEquipmentCodes}"
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                SelectionChanged="EquipmentCodesListBoxSelectionChanged"
+                SelectionMode="Single">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Code}" />
+                            <Run Text="{Binding Code, Converter={StaticResource IsEmptyStringConverter}, ConverterParameter=' - '}" />
+                            <Run Text="{Binding Description}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button
+                VerticalAlignment="Top"
+                Command="{CompiledBinding RemoveEquipmentCodeCommand}"
+                CommandParameter="{Binding SelectedItem, ElementName=EquipmentCodesListBox}"
+                Content="{CompiledBinding RemoveSelection}"
+                IsEnabled="{CompiledBinding IsRemoveEnabled}" />
+        </StackPanel>
+    </Grid>
+</Window>
