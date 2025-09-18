@@ -11,7 +11,8 @@ Includes a **PR Code search with ListBox** for quick adding and checking.
 - 🔹 Generate VIN files for PETKA  
 - 🔹 Modern UI powered by Avalonia  
 - 🔹 Search PR Codes quickly via ListBox  
-- 🔹 Lightweight and responsive  
+- 🔹 Lightweight and responsive
+- 🔹 Help by cliking on the Labels above TextBoxes
 
 ---
 
