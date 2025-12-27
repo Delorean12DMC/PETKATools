@@ -226,7 +226,7 @@ namespace VINCreator.ViewModels
         /// <summary>
         /// Gets the window title.
         /// </summary>
-        public string WindowTitle { get; } = "FIN Ersteller - Delorean12DMC - v0.8";
+        public string WindowTitle { get; } = "FIN Ersteller - Delorean12DMC - v0.81";
 
         /// <summary>
         /// Gets the label for VIN.
